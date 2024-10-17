@@ -1,13 +1,15 @@
 #include <Arduino.h>
-#include <WebServer.h>
 #include <LEDController.h>
 #include <WiFiManager.h>
+#include <EffectSelectorPage.h>
 
 // WiFI Manager
 WiFiManager wm;
 
 // put function declarations here:
-bool animationRunning = false;
+int animationState;
+
+
 
 void setup() {
   Serial.begin(115200);
@@ -30,6 +32,9 @@ void setup() {
     Serial.println("Configportal running");
   }
 
+  // Initalise Web Server
+  startWebServer();
+
 
   // Initalise the LED Strip and set the default colour to Red
   initStrip();
@@ -39,8 +44,6 @@ void setup() {
 void loop() {
   // Process the WiFi Manager Captive Portal
   wm.process();
-  
-  
-  animationSelector(6);
-  animationRunning = true;
+
+  animationSelector(getAnimation());
 }

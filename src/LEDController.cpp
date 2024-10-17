@@ -386,6 +386,8 @@ void animationSelector(int selectedAnimation) {
         rotateLoopAnimations.StopAll();
         cylonAnimations.StopAll();
         funLoopAnimations.StopAll();
+        strip.ClearTo(HtmlColor(0x000000));
+        strip.Show();
     }
 
     else if (selectedAnimation == 1) {
