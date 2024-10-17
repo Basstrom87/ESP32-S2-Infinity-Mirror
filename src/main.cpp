@@ -1,18 +1,16 @@
 #include <Arduino.h>
+#include <WebServer.h>
+#include <LEDController.h>
 
 // put function declarations here:
-int myFunction(int, int);
+bool animationRunning = false;
 
 void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+  initStrip();
+  changeCylonColour(HtmlColor(0x7f0000));
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-}
-
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+    animationSelector(6);
+    animationRunning = true;
 }
